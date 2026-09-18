@@ -8,3 +8,4 @@ set -euo pipefail
 # Wrapper at $PREFIX/bin/petcam (§11.4.5) — sh wrapper, NOT symlink
 # Doctor skip with PETCAM_NO_DOCTOR; setup offer skip with PETCAM_NO_SETUP (§11.4.6)
 # Env vars: PETCAM_REPO, PETCAM_BRANCH, PETCAM_DIR, PETCAM_HOME (§11.4 frozen)
+# Canonical source: https://raw.githubusercontent.com/ozymand1as/tg_pet_cam_termux/refs/heads/master/install.sh

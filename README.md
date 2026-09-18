@@ -1,6 +1,6 @@
 # petcam
 
-One-line install (Termux): `curl -fsSL https://raw.githubusercontent.com/<user>/pet-cam-cli/main/install.sh | bash`
+One-line install (Termux): `curl -fsSL https://raw.githubusercontent.com/ozymand1as/tg_pet_cam_termux/refs/heads/master/install.sh | bash`
 
 Audited install: `curl -O install.sh; less install.sh; bash install.sh`
 
