@@ -1,0 +1,17 @@
+# TODO — petcam implementation (spec.md §12 tickets)
+
+T1  scaffold  [DONE]
+T2  settings  [IN_PROGRESS]
+T3  telegram  [PENDING]
+T4  termux    [PENDING]
+T5  camera    [PENDING]
+T6  video     [PENDING]
+T7  scheduler [PENDING]
+T8  wakelock  [PENDING]
+T9  wiring    [PENDING]
+T10 photo     [PENDING]
+T11 run       [PENDING]
+T12 video cmd [PENDING]
+T13 json/doct [DONE]
+T14 install  [PENDING]
+T15 version  [PENDING]

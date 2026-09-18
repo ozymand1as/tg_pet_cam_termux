@@ -1,0 +1,1 @@
+{"name":"petcam","version":"2.1.0","type":"module","bin":{"petcam":"./bin/petcam.js"}}
