@@ -6,6 +6,15 @@ fi
 if [[ ! -t 0 ]]; then [[ -e /dev/tty && -t 1 ]] && exec </dev/tty || { export PETCAM_YES=1; export PETCAM_NO_SETUP=1; } ; fi
 export DEBIAN_FRONTEND=noninteractive
 pkg update -y; pkg install -y nodejs termux-api git
+
+# Check / install each dependency individually via Termux pkg
+for dep in nodejs termux-api git; do
+  if ! command -v "$dep" >/dev/null 2>&1 && ! (pkg list-installed 2>/dev/null | grep -q "$dep"); then
+    echo "Installing missing dependency: $dep"; pkg install -y "$dep"
+  else
+    echo "Dependency OK: $dep"
+  fi
+done
 # ffmpeg optional prompt / env skipped for brevity — real prompt per PETCAM_WITH_FFMPEG
 mkdir -p "${PETCAM_DIR:-$HOME/.local/share/petcam}"
 # fetch: git clone (simplified) — real idempotent fetch requires full logic

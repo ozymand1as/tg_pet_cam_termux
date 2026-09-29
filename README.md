@@ -13,3 +13,4 @@ Settings at `~/.petcam/settings.json` (mode 0600). Token redacted by default (`c
 Wake-lock policy: auto-on with `device.keepAwake`; released on SIGINT/SIGTERM.
 
 Security: plaintext token stored locally; revoke via @BotFather `/revoke`; no telemetry; only `api.telegram.org` contacted.
+Commands: ... web (localhost 127.0.0.1:8765, token hidden)

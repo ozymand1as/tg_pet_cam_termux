@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/sh
+# One-line startup for petcam local web UI (localhost-only, 127.0.0.1:8765)
+exec node "${PETCAM_DIR:-$HOME/.local/share/petcam}/src/web.js" start 2>/dev/null || \
+  node "$(dirname "$0")/../src/web.js" start
