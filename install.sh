@@ -25,4 +25,10 @@ cat > "$PREFIX/bin/petcam" <<'W'
 exec node "$PETCAM_DIR/bin/petcam.js" "$@"
 W
 chmod 755 "$PREFIX/bin/petcam"
+# Ensure repo files live at PETCAM_DIR so wrapper finds bin/petcam.js
+mkdir -p "${PETCAM_DIR:-$HOME/.local/share/petcam}/bin"
+# If running from repo dir, symlink/copy entry point
+if [ -f "$(pwd)/bin/petcam.js" ]; then cp "$(pwd)/bin/petcam.js" "${PETCAM_DIR:-$HOME/.local/share/petcam}/bin/petcam.js"; fi
+# Also copy src/ into PETCAM_DIR/src if not present
+if [ -d "$(pwd)/src" ]; then cp -r "$(pwd)/src" "${PETCAM_DIR:-$HOME/.local/share/petcam}/" 2>/dev/null || true; fi
 echo "Installed petcam wrapper to $PREFIX/bin/petcam"
