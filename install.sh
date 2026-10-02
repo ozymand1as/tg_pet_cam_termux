@@ -22,9 +22,10 @@ mkdir -p "${PETCAM_DIR:-$HOME/.local/share/petcam}"
 mkdir -p "$PREFIX/bin"
 cat > "$PREFIX/bin/petcam" <<'W'
 #!/data/data/com.termux/files/usr/bin/sh
-exec node "$PETCAM_DIR/bin/petcam.js" "$@"
+exec node "${PETCAM_DIR:-$HOME/.local/share/petcam}/bin/petcam.js" "$@"
 W
 chmod 755 "$PREFIX/bin/petcam"
+export PETCAM_DIR="${PETCAM_DIR:-$HOME/.local/share/petcam}"
 # Ensure repo files live at PETCAM_DIR so wrapper finds bin/petcam.js
 mkdir -p "${PETCAM_DIR:-$HOME/.local/share/petcam}/bin"
 # If running from repo dir, symlink/copy entry point
