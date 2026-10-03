@@ -10,3 +10,10 @@ export function clearStatus(){}
 export function banner(t){ console.log(t); }
 export function table(r){ r.forEach(x=>console.log(x.join(' \t'))); }
 export function die(msg,c=1){ console.error(msg); process.exit(c); }
+// CLI entry: if called directly (require/run), dispatch web/setup commands
+if (require.main === module || (typeof process !== 'undefined' && process.argv && process.argv[1] && process.argv[1].includes('petcam'))) {
+  const args = process.argv.slice(2);
+  if (args[0] === 'web') { const w = require('./web.js'); w.start(args.includes('--port') ? parseInt(args[args.indexOf('--port')+1]) : 8765); }
+  else if (args[0] === 'setup') console.log('setup stub');
+  else console.log('petcam:', args[0] || 'no command');
+}
