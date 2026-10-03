@@ -28,6 +28,12 @@ chmod 755 "$PREFIX/bin/petcam"
 export PETCAM_DIR="${PETCAM_DIR:-$HOME/.local/share/petcam}"
 # Ensure repo files live at PETCAM_DIR so wrapper finds bin/petcam.js
 mkdir -p "${PETCAM_DIR:-$HOME/.local/share/petcam}/bin"
+export PETCAM_DIR="${PETCAM_DIR:-$HOME/.local/share/petcam}"
+# Ensure whole repo copied so wrapper+cli+web find files
+if [ -d "$(pwd)/src" ]; then cp -r "$(pwd)/src" "${PETCAM_DIR}/" 2>/dev/null || true; fi
+if [ -f "$(pwd)/bin/petcam.js" ]; then cp "$(pwd)/bin/petcam.js" "${PETCAM_DIR}/bin/petcam.js"; fi
+# If empty after copy, create symlink fallback
+if [ -z "$(ls -A ${PETCAM_DIR}/bin/ 2>/dev/null)" ]; then ln -sf "$(pwd)/bin/petcam.js" "${PETCAM_DIR}/bin/petcam.js" 2>/dev/null || true; fi
 # If running from repo dir, symlink/copy entry point
 if [ -f "$(pwd)/bin/petcam.js" ]; then cp "$(pwd)/bin/petcam.js" "${PETCAM_DIR:-$HOME/.local/share/petcam}/bin/petcam.js"; fi
 # Also copy src/ into PETCAM_DIR/src if not present
